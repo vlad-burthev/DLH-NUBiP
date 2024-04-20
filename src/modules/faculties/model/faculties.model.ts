@@ -12,6 +12,7 @@ export class Faculties extends Model<Faculties, I_FacultyCreateAttrs> {
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
   id: number;
 
+  @ApiProperty({ example: 'IT', description: 'Назва факультету' })
   @Column({ type: DataType.STRING, allowNull: false })
   name: string;
 }
