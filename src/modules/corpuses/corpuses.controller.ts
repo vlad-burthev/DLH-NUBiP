@@ -13,12 +13,17 @@ import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import * as path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Corpuses } from './model/corpuses.model';
 
+@ApiTags('Корпуси')
 @Controller('corpuses')
 export class CorpusesController {
   constructor(private readonly corpusService: CorpusesService) {}
 
   @Post('create-corpus')
+  @ApiOperation({ summary: 'Створення корпусу' })
+  @ApiResponse({ status: 200, type: Corpuses })
   @UseInterceptors(
     FileInterceptor('corpusImage', {
       storage: diskStorage({
