@@ -13,11 +13,13 @@ import { CheckRoleMiddleware } from 'src/middlewares/checkRoleMiddleware';
 })
 export class CorpusesModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(CheckRoleMiddleware)
-      .forRoutes({
+    consumer.apply(CheckRoleMiddleware).forRoutes(
+      {
         path: 'corpuses/create-corpus',
         method: RequestMethod.POST,
-      });
+      },
+      { path: 'corpuses/delete-corpus/*', method: RequestMethod.POST },
+      { path: 'corpuses/modify-corpus', method: RequestMethod.PATCH },
+    );
   }
 }

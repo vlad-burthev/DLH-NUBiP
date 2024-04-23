@@ -1,19 +1,24 @@
 import {
   Body,
   Controller,
+  Get,
+  Param,
+  Patch,
   Post,
+  Query,
+  Req,
   Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { Response } from 'express';
-import { CreateCorpusDto } from './dto/corpuses.dto';
+import { Response, query } from 'express';
+import { CreateCorpusDto, ModifyCorpusDto } from './dto/corpuses.dto';
 import { CorpusesService } from './corpuses.service';
-import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import * as path from 'path';
 import { v4 as uuidv4 } from 'uuid';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Corpuses } from './model/corpuses.model';
 
 @ApiTags('Корпуси')
@@ -40,7 +45,37 @@ export class CorpusesController {
     @Body() corpus: CreateCorpusDto,
     @UploadedFile() corpusImages: Express.Multer.File,
   ) {
-    console.log(corpusImages);
     return this.corpusService.createCorpus(res, corpus, corpusImages);
+  }
+
+  @Post('delete-corpus/:id')
+  @ApiOperation({ summary: 'Видалення корпусу' })
+  @ApiResponse({ status: 200, description: 'Successfully' })
+  deleteCorpusById(@Res() res: Response, @Param('id') id: number) {
+    return this.corpusService.deleteCorpus(res, id);
+  }
+
+  @Patch('modify-corpus')
+  @ApiOperation({ summary: 'Змінення корпусу' })
+  @ApiResponse({ status: 200 })
+  modifyCorpusById(@Res() res: Response, @Body() req: ModifyCorpusDto) {
+    return this.corpusService.modifyCorpus(res, req);
+  }
+
+  @Get('get-all-corpuses')
+  @ApiOperation({ summary: 'Отримати всі корпуси' })
+  @ApiResponse({ status: 200, type: Corpuses })
+  @ApiQuery({ name: 'page', type: 'number' })
+  getAllCorpuses(
+    @Res() res: Response,
+    @Query('page') page: number,
+    @Query('pageSize') pageSize: number,
+  ) {
+    return this.corpusService.getAllCorpuses(res, page, pageSize);
+  }
+
+  @Get('get-one-corpus/:id')
+  getOneCorpusById(@Res() res: Response, @Param('id') id: number) {
+    return this.corpusService.getOneCorpus(res, id);
   }
 }
