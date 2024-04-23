@@ -15,11 +15,11 @@ export class CorpusesModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(CheckRoleMiddleware).forRoutes(
       {
-        path: 'corpuses/create-corpus',
+        path: 'corpuses/create',
         method: RequestMethod.POST,
       },
-      { path: 'corpuses/delete-corpus/*', method: RequestMethod.POST },
-      { path: 'corpuses/modify-corpus', method: RequestMethod.PATCH },
+      { path: 'corpuses/delete/*', method: RequestMethod.POST },
+      { path: 'corpuses/modify', method: RequestMethod.PATCH },
     );
   }
 }

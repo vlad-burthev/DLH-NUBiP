@@ -16,9 +16,9 @@ export class FacultiesModule {
     consumer
       .apply(CheckRoleMiddleware)
       .forRoutes(
-        { path: 'faculties/add-faculty', method: RequestMethod.POST },
-        { path: 'faculties/delete-faculty/*', method: RequestMethod.POST },
-        { path: 'faculties/update-faculty/*', method: RequestMethod.POST },
+        { path: 'faculties/create', method: RequestMethod.POST },
+        { path: 'faculties/delete/*', method: RequestMethod.POST },
+        { path: 'faculties/modify/*', method: RequestMethod.POST },
       );
   }
 }

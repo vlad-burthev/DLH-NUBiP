@@ -10,35 +10,35 @@ import { Faculties } from './model/faculties.model';
 export class FacultiesController {
   constructor(private readonly facultiesService: FacultiesService) {}
 
-  @Get('all-faculties')
+  @Get('get-all')
   @ApiOperation({ summary: 'Отримати всі факультети' })
   @ApiResponse({ status: 200, type: Faculties })
   getAllFaculties(@Res() res: Response) {
     return this.facultiesService.getAllFaculties(res);
   }
 
-  @Get('faculty-by-id')
+  @Get('get-one')
   @ApiOperation({ summary: 'Отримати факультет по Id' })
   @ApiResponse({ status: 200, type: Faculties })
   getFacultyById(@Body('id') id: number) {
     return this.facultiesService.getFacultyById(id);
   }
 
-  @Post('add-faculty')
+  @Post('create')
   @ApiOperation({ summary: 'Створення нового факультету' })
   @ApiResponse({ status: 200, type: Faculties })
   createFaculty(@Res() res: Response, @Body() facultyDto: CreateFacultyDto) {
     return this.facultiesService.createNewFacylty(res, facultyDto);
   }
 
-  @Post('delete-faculty/:id')
+  @Post('delete/:id')
   @ApiOperation({ summary: 'Видалення факультету' })
   @ApiResponse({ status: 200, type: Faculties })
   deleteFacultyById(@Res() res: Response, @Param('id') id: number) {
     return this.facultiesService.deleteFaculty(res, id);
   }
 
-  @Post('update-faculty/:id')
+  @Post('modify/:id')
   @ApiOperation({ summary: 'Змінення факультету' })
   @ApiResponse({ status: 200, type: Faculties })
   updateFacultyById(

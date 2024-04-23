@@ -31,7 +31,7 @@ export class UsersController {
     return this.usersService.checkAuth(req, res);
   }
 
-  @Post('delete-user/:id')
+  @Post('delete/:id')
   @ApiOperation({ summary: 'Видалення користувача' })
   @ApiResponse({ status: 200 })
   deleteUser(@Res() res: Response, @Param('id') id: number) {

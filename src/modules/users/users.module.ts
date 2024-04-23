@@ -16,7 +16,7 @@ export class UsersModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(CheckRoleMiddleware)
-      .forRoutes({ path: 'users/delete-user/*', method: RequestMethod.POST });
+      .forRoutes({ path: 'users/delete/*', method: RequestMethod.POST });
     consumer
       .apply(CheckAuthMiddleware)
       .forRoutes({ path: 'users/check-auth', method: RequestMethod.GET });

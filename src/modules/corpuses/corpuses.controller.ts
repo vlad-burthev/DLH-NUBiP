@@ -26,7 +26,7 @@ import { Corpuses } from './model/corpuses.model';
 export class CorpusesController {
   constructor(private readonly corpusService: CorpusesService) {}
 
-  @Post('create-corpus')
+  @Post('create')
   @ApiOperation({ summary: 'Створення корпусу' })
   @ApiResponse({ status: 200, type: Corpuses })
   @UseInterceptors(
@@ -48,21 +48,21 @@ export class CorpusesController {
     return this.corpusService.createCorpus(res, corpus, corpusImages);
   }
 
-  @Post('delete-corpus/:id')
+  @Post('delete/:id')
   @ApiOperation({ summary: 'Видалення корпусу' })
   @ApiResponse({ status: 200, description: 'Successfully' })
   deleteCorpusById(@Res() res: Response, @Param('id') id: number) {
     return this.corpusService.deleteCorpus(res, id);
   }
 
-  @Patch('modify-corpus')
+  @Patch('modify')
   @ApiOperation({ summary: 'Змінення корпусу' })
   @ApiResponse({ status: 200 })
   modifyCorpusById(@Res() res: Response, @Body() req: ModifyCorpusDto) {
     return this.corpusService.modifyCorpus(res, req);
   }
 
-  @Get('get-all-corpuses')
+  @Get('get-all')
   @ApiOperation({ summary: 'Отримати всі корпуси' })
   @ApiResponse({ status: 200, type: Corpuses })
   @ApiQuery({ name: 'page', type: 'number' })
@@ -74,7 +74,7 @@ export class CorpusesController {
     return this.corpusService.getAllCorpuses(res, page, pageSize);
   }
 
-  @Get('get-one-corpus/:id')
+  @Get('get-one/:id')
   getOneCorpusById(@Res() res: Response, @Param('id') id: number) {
     return this.corpusService.getOneCorpus(res, id);
   }
