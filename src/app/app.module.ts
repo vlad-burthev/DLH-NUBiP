@@ -7,7 +7,7 @@ import * as path from 'path';
 import configurations from 'src/config';
 import { CorpusesImageService } from 'src/modules/corpuses-images/corpuses-image.service';
 import { CorpusesImageModule } from 'src/modules/corpuses-images/corpuses-images.module';
-import { CorpusesImage } from 'src/modules/corpuses-images/model/corpuses-image.module';
+import { CorpusesImage } from 'src/modules/corpuses-images/model/corpuses-image.model';
 import { CorpusesController } from 'src/modules/corpuses/corpuses.controller';
 import { CorpusesModule } from 'src/modules/corpuses/corpuses.module';
 import { CorpusesService } from 'src/modules/corpuses/corpuses.service';
