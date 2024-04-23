@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CorpusesImage } from './model/corpuses-image.module';
+import { CorpusesImage } from './model/corpuses-image.model';
 
 @Injectable()
 export class CorpusesImageService {
-  async addCorpusImage(/*res: Response,*/ corpusId: number, image: string) {
+  async addCorpusImage(corpusId: number, image: string) {
     try {
       const createdCorpusImage = await CorpusesImage.create({
         corpusId,

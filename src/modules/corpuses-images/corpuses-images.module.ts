@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CorpusesImageService } from './corpuses-image.service';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { CorpusesImage } from './model/corpuses-image.module';
+import { CorpusesImage } from './model/corpuses-image.model';
 
 @Module({
   providers: [CorpusesImageService],
