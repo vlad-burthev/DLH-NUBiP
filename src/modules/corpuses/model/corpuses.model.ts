@@ -4,9 +4,12 @@ import {
   Column,
   DataType,
   ForeignKey,
+  HasMany,
+  HasOne,
   Model,
   Table,
 } from 'sequelize-typescript';
+import { CorpusesImage } from 'src/modules/corpuses-images/model/corpuses-image.model';
 import { Faculties } from 'src/modules/faculties/model/faculties.model';
 
 interface I_Corpuses {
@@ -93,4 +96,7 @@ export class Corpuses extends Model<Corpuses, I_Corpuses> {
   })
   @Column({ allowNull: false, unique: true })
   phone: string;
+
+  @HasOne(() => CorpusesImage)
+  image: CorpusesImage;
 }
