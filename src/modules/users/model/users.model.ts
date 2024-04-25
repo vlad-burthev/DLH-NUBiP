@@ -1,13 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
   BelongsTo,
-  DataType,
   Model,
   Column,
   ForeignKey,
   Table,
+  HasMany,
 } from 'sequelize-typescript';
 import { Faculties } from 'src/modules/faculties/model/faculties.model';
+import { UserPoints } from 'src/modules/user-points/model/user-points.model';
 
 export interface I_UserCreateAttrs {
   id: number;
@@ -47,4 +48,7 @@ export class Users extends Model<Users, I_UserCreateAttrs> {
   })
   @Column({ allowNull: false })
   password: string;
+
+  @HasMany(() => UserPoints)
+  points: UserPoints[];
 }
