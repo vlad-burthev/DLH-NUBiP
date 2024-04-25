@@ -4,7 +4,6 @@ import {
   Column,
   DataType,
   ForeignKey,
-  HasMany,
   HasOne,
   Model,
   Table,
@@ -27,7 +26,6 @@ interface I_Corpuses {
 
 @Table({ tableName: 'Corpuses', timestamps: false })
 export class Corpuses extends Model<Corpuses, I_Corpuses> {
-  @ApiProperty({ example: '1', description: 'Унікальний індекс' })
   @Column({ autoIncrement: true, primaryKey: true })
   id: number;
 

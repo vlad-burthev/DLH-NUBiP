@@ -6,8 +6,9 @@ import {
   IsOptional,
   IsString,
   Length,
+  Max,
+  Min,
 } from 'class-validator';
-import { NotEmpty } from 'sequelize-typescript';
 
 export class CreateCorpusDto {
   @ApiProperty({
@@ -115,16 +116,16 @@ export class ModifyCorpusDto {
     example: 50.38145101624412,
     description: 'Широта',
   })
-  @IsOptional()
-  @Length(-180, 180, { message: 'Invalid latitude' })
+  @Min(-180, { message: 'Latitude must be greater than or equal to -180' })
+  @Max(180, { message: 'Latitude must be less than or equal to 180' })
   latitude: number;
 
   @ApiProperty({
     example: 30.4957272025944,
     description: 'Довгота',
   })
-  @IsOptional()
-  @Length(-180, 180, { message: 'Invalid longitude' })
+  @Min(-180, { message: 'Longitude must be greater than or equal to -180' })
+  @Max(180, { message: 'Longitude must be less than or equal to 180' })
   longitude: number;
 
   @ApiProperty({

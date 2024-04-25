@@ -17,10 +17,10 @@ export class FacultiesController {
     return this.facultiesService.getAllFaculties(res);
   }
 
-  @Get('get-one')
+  @Get('get-one/:id')
   @ApiOperation({ summary: 'Отримати факультет по Id' })
   @ApiResponse({ status: 200, type: Faculties })
-  getFacultyById(@Body('id') id: number) {
+  getFacultyById(@Param('id') id: number) {
     return this.facultiesService.getFacultyById(id);
   }
 

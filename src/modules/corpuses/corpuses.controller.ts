@@ -11,7 +11,7 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { Response, query } from 'express';
+import { Response } from 'express';
 import { CreateCorpusDto, ModifyCorpusDto } from './dto/corpuses.dto';
 import { CorpusesService } from './corpuses.service';
 import { FileInterceptor } from '@nestjs/platform-express';
