@@ -20,6 +20,7 @@ export interface I_UserPoints {
 
 @Table({ tableName: 'UserPoint', timestamps: false })
 export class UserPoints extends Model<UserPoints, I_UserPoints> {
+  @ApiProperty({ example: 1, description: 'Id точки' })
   @Column({ autoIncrement: true, primaryKey: true })
   id: number;
 
