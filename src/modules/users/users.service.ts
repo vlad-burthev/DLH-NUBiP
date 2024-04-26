@@ -99,9 +99,7 @@ export class UsersService {
         { id, email, facultyId, role },
         { secret: this.configService.get('secretKey') },
       );
-      cookie.serialize('token', token, {
-        httpOnly: true,
-        maxAge: 24 * 60 * 60,
+      res.cookie('token', token, {
         path: '/',
       });
 

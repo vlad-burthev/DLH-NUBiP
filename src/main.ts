@@ -18,6 +18,11 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useStaticAssets(path.join(__dirname, '..', '..', 'static'));
 
+  app.enableCors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  });
+
   const config = new DocumentBuilder()
     .setTitle('API для проєкту "Система ідентифікації НУБіП"')
     .setDescription('Документація REST API')
