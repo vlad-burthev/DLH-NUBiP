@@ -18,6 +18,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.useStaticAssets(path.join(__dirname, '..', '..', 'static'));
 
+  //eneable CORS for localhost
   app.enableCors({
     origin: 'http://localhost:5173',
     credentials: true,
